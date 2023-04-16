@@ -14,13 +14,17 @@ function simple() {
     if (action.type === 'INCREMENT') {
       const { count = 1 } = action
 
-      return state + count
+      if (typeof count == 'number') {
+        return state + count
+      }
     }
 
     if (action.type === 'DECREMENT') {
       const { count = 1 } = action
 
-      return state - count
+      if (typeof count == 'number') {
+        return state - count
+      }
     }
 
     return state
@@ -176,12 +180,12 @@ function typeGuards() {
 
   type State = number
 
-  interface IncrementAction {
+  type IncrementAction = {
     type: 'INCREMENT'
     count?: number
   }
 
-  interface DecrementAction {
+  type DecrementAction = {
     type: 'DECREMENT'
     count?: number
   }

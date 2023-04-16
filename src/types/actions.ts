@@ -15,7 +15,7 @@
  *
  * @template T the type of the action's `type` tag.
  */
-export interface Action<T = any> {
+export type Action<T = unknown> = {
   type: T
 }
 
@@ -27,7 +27,7 @@ export interface Action<T = any> {
  */
 export interface AnyAction extends Action {
   // Allows any extra properties to be defined in an action.
-  [extraProps: string]: any
+  [extraProps: string]: unknown
 }
 
 /* action creators */

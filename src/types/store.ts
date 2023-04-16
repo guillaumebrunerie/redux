@@ -122,7 +122,7 @@ export type Observer<T> = {
  * @template StateExt any extension to state from store enhancers
  */
 export interface Store<
-  S = any,
+  S = unknown,
   A extends Action = AnyAction,
   StateExt extends {} = {}
 > {
@@ -260,7 +260,7 @@ export type StoreEnhancer<Ext extends {} = {}, StateExt extends {} = {}> = <
 export type StoreEnhancerStoreCreator<
   Ext extends {} = {},
   StateExt extends {} = {}
-> = <S = any, A extends Action = AnyAction>(
+> = <S = unknown, A extends Action = AnyAction>(
   reducer: Reducer<S, A>,
   preloadedState?: PreloadedState<S>
 ) => Store<S, A, StateExt> & Ext

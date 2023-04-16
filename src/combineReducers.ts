@@ -111,16 +111,16 @@ function assertReducerShape(reducers: ReducersMapObject) {
  *   object, and builds a state object with the same shape.
  */
 export default function combineReducers<S>(
-  reducers: ReducersMapObject<S, any>
+  reducers: ReducersMapObject<S>
 ): Reducer<CombinedState<S>>
 export default function combineReducers<S, A extends Action = AnyAction>(
   reducers: ReducersMapObject<S, A>
 ): Reducer<CombinedState<S>, A>
-export default function combineReducers<M extends ReducersMapObject>(
+export default function combineReducers<M extends ReducersMapObject<S>, S>(
   reducers: M
 ): Reducer<
   CombinedState<StateFromReducersMapObject<M>>,
-  ActionFromReducersMapObject<M>
+  ActionFromReducersMapObject<M, S>
 >
 export default function combineReducers(reducers: ReducersMapObject) {
   const reducerKeys = Object.keys(reducers)

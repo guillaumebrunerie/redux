@@ -26,7 +26,7 @@ import { Action, AnyAction } from './actions'
  * @template S The type of state consumed and produced by this reducer.
  * @template A The type of actions the reducer can potentially respond to.
  */
-export type Reducer<S = any, A extends Action = AnyAction> = (
+export type Reducer<S = unknown, A extends Action = AnyAction> = (
   state: S | undefined,
   action: A
 ) => S
@@ -74,6 +74,6 @@ export type ActionFromReducer<R> = R extends Reducer<any, infer A> ? A : never
  *
  * @template M Object map of reducers as provided to `combineReducers(map: M)`.
  */
-export type ActionFromReducersMapObject<M> = M extends ReducersMapObject
+export type ActionFromReducersMapObject<M, S> = M extends ReducersMapObject<S>
   ? ActionFromReducer<ReducerFromReducersMapObject<M>>
   : never

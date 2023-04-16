@@ -1,6 +1,6 @@
 import { Dispatch } from './store'
 
-export interface MiddlewareAPI<D extends Dispatch = Dispatch, S = any> {
+export interface MiddlewareAPI<D extends Dispatch = Dispatch, S = unknown> {
   dispatch: D
   getState(): S
 }
@@ -21,10 +21,10 @@ export interface MiddlewareAPI<D extends Dispatch = Dispatch, S = any> {
  */
 export interface Middleware<
   _DispatchExt = {}, // TODO: remove unused component (breaking change)
-  S = any,
+  S = unknown,
   D extends Dispatch = Dispatch
 > {
   (api: MiddlewareAPI<D, S>): (
     next: D
-  ) => (action: D extends Dispatch<infer A> ? A : never) => any
+  ) => (action: D extends Dispatch<infer A> ? A : never) => unknown
 }
